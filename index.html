@@ -3,383 +3,987 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SHX 亗 | Esports Guild</title>
-    <meta
-      name="description"
-      content="SHX 亗 is an esports guild landing page for Free Fire players, team growth, leaderboard, rules, and community registration."
-    />
-    <meta
-      name="keywords"
-      content="SHX, SHX 亗, esports guild, Free Fire guild, leaderboard, gaming community"
-    />
-    <meta name="theme-color" content="#050b14" />
+    <title>SHX 亗 | Official Free Fire Guild Portal</title>
+    <meta name="description" content="Официальный светлый портал гильдии Free Fire SHX 亗. Лидер: ISOJANE 67X (Sharipov)." />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
     <style>
       :root {
-        --bg: #050b14;
-        --bg-soft: #0d1420;
-        --panel: rgba(14, 20, 30, 0.84);
-        --panel-strong: rgba(18, 25, 36, 0.98);
-        --gold: #f5d76e;
-        --gold-strong: #f0b93b;
-        --gold-deep: #86560b;
-        --line: rgba(245, 215, 110, 0.28);
-        --text: #ebf2ff;
-        --muted: #a6b0c3;
-        --green: #4ade80;
-        --red: #ff5d73;
+        --bg-radial-1: #edf3ff;
+        --bg-radial-2: #f7f9ff;
+        --text-main: #162236;
+        --text-muted: #5d6c80;
+        --gold-1: #f9e88d;
+        --gold-2: #e7c65a;
+        --gold-3: #bc8b21;
+        --green: #24c77d;
+        --red: #f15b5b;
       }
 
-      html {
-        scroll-behavior: smooth;
-      }
+      * { box-sizing: border-box; }
+      html, body { height: 100%; margin: 0; font-family: 'Rajdhani', sans-serif; background: var(--bg-radial-1); color: var(--text-main); overflow-x: hidden; }
 
       body {
-        margin: 0;
-        font-family: "Rajdhani", sans-serif;
         background:
-          radial-gradient(circle at 10% 10%, rgba(245, 215, 110, 0.08), transparent 24%),
-          radial-gradient(circle at 90% 100%, rgba(133, 86, 11, 0.12), transparent 28%),
-          var(--bg);
-        color: var(--text);
+          radial-gradient(circle at 12% 10%, rgba(249, 232, 141, 0.35), transparent 22%),
+          radial-gradient(circle at 88% 90%, rgba(184, 131, 29, 0.18), transparent 26%),
+          linear-gradient(180deg, var(--bg-radial-1), var(--bg-radial-2));
       }
 
-      .font-orbitron {
-        font-family: "Orbitron", sans-serif;
-      }
+      .font-orbitron { font-family: 'Orbitron', sans-serif; }
+
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: #edf3ff; }
+      ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #e7c65a; }
 
       .gold-text {
-        background: linear-gradient(180deg, #fff 0%, #fce7a8 22%, #f5d76e 50%, #a66d1f 100%);
+        background: linear-gradient(180deg, #2a2a2a 0%, #b8860b 30%, #e7c65a 65%, #7e520f 100%);
         -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        text-shadow: 0 0 18px rgba(245, 215, 110, 0.25);
+        -webkit-text-fill-color: transparent;
       }
 
-      .glass {
-        background: linear-gradient(180deg, rgba(15, 21, 31, 0.92), rgba(10, 15, 22, 0.88));
-        border: 1px solid var(--line);
-        box-shadow: 0 16px 38px rgba(0, 0, 0, 0.28);
+      .gold-btn {
+        background: linear-gradient(135deg, var(--gold-1), var(--gold-2), var(--gold-3));
+        color: #111827;
+        font-weight: 700;
+        border: 1px solid rgba(214, 173, 72, 0.7);
+        box-shadow: 0 10px 24px rgba(234, 203, 95, 0.28);
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .gold-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 30px rgba(234, 203, 95, 0.4);
+      }
+
+      .glass-card {
+        background: rgba(255, 255, 255, 0.65);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        box-shadow: 0 20px 40px rgba(30, 50, 90, 0.06);
+      }
+
+      .glass-input {
+        background: rgba(255, 255, 255, 0.75) !important;
+        border: 1px solid rgba(148, 163, 184, 0.3) !important;
+        color: #1e293b !important;
+      }
+      .glass-input:focus {
+        border-color: #e7c65a !important;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(231, 198, 90, 0.25);
+      }
+
+      .sidebar-item {
+        transition: all 0.2s ease;
+        border-left: 4px solid transparent;
+        color: #475569;
+      }
+      .sidebar-item.active, .sidebar-item:hover {
+        background: rgba(249, 232, 141, 0.25);
+        color: #b9821d;
+        border-left-color: #e7c65a;
+        font-weight: 700;
+      }
+
+      .page { display: none; animation: fadeIn 0.35s ease-in-out; }
+      .page.active { display: block; }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(6px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .status-pulse {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--green);
+        box-shadow: 0 0 12px rgba(36, 199, 125, 0.8);
+      }
+
+      .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.45);
         backdrop-filter: blur(14px);
         -webkit-backdrop-filter: blur(14px);
+        z-index: 100;
       }
 
-      .hero-grid {
-        background-image:
-          linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-        background-size: 28px 28px;
+      .slide { display: none; }
+      .slide.active { display: block; }
+
+      .hero-pattern {
+        background-image: linear-gradient(rgba(160,178,210,0.06) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(160,178,210,0.06) 1px, transparent 1px);
+        background-size: 24px 24px;
       }
 
-      .pulse {
-        animation: pulse 3.2s ease-in-out infinite;
+      /* Celebration Animation */
+      @keyframes popIn {
+        0% { transform: scale(0.6); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
       }
-
-      @keyframes pulse {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.06); }
-      }
-
-      .badge {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.5rem 0.8rem;
-        border-radius: 999px;
-        border: 1px solid rgba(245, 215, 110, 0.32);
-        background: rgba(245, 215, 110, 0.08);
-        color: var(--gold);
-        font-size: 0.7rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        font-family: "Orbitron", sans-serif;
-      }
-
-      .btn-gold {
-        background: linear-gradient(135deg, var(--gold), var(--gold-strong), var(--gold-deep));
-        color: #0b1018;
-        box-shadow: 0 10px 26px rgba(245, 215, 110, 0.24);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-
-      .btn-gold:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 18px 30px rgba(245, 215, 110, 0.3);
-      }
-
-      .panel-title {
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-      }
-
-      .text-glow {
-        text-shadow: 0 0 20px rgba(245, 215, 110, 0.28);
-      }
+      .celebrate-box { animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
     </style>
   </head>
-  <body>
-    <div class="min-h-screen">
-      <header class="sticky top-0 z-50 border-b border-yellow-500/20 bg-[#090f18]/80 backdrop-blur-md">
-        <div class="mx-auto max-w-7xl px-5 py-4 flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <div class="flex h-10 w-10 items-center justify-center rounded-xl border border-yellow-500/30 bg-yellow-500/10 text-yellow-300">
-              <i class="fas fa-crown"></i>
-            </div>
-            <div>
-              <div class="font-orbitron text-xl font-black tracking-[0.18em] gold-text">SHX 亗</div>
-            </div>
-          </div>
 
-          <nav class="hidden items-center gap-8 md:flex">
-            <a href="#about" class="text-sm uppercase tracking-[0.18em] text-gray-300 hover:text-yellow-300">About</a>
-            <a href="#leaderboard" class="text-sm uppercase tracking-[0.18em] text-gray-300 hover:text-yellow-300">Leaderboard</a>
-            <a href="#rules" class="text-sm uppercase tracking-[0.18em] text-gray-300 hover:text-yellow-300">Rules</a>
-            <a href="#join" class="text-sm uppercase tracking-[0.18em] text-gray-300 hover:text-yellow-300">Apply</a>
-          </nav>
+  <body class="flex flex-col md:flex-row min-h-screen">
 
-          <a href="#join" class="btn-gold rounded-xl px-4 py-2 font-orbitron text-xs uppercase tracking-[0.18em]">
-            Join guild
-          </a>
+    <!-- AGE VERIFICATION MODAL -->
+    <div id="rulesModal" class="modal-backdrop flex items-center justify-center p-4">
+      <div class="glass-card rounded-3xl max-w-lg w-full p-6 md:p-8 text-center shadow-2xl border border-yellow-300/60">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-yellow-100 flex items-center justify-center text-yellow-700 text-3xl shadow-sm">
+          <i class="fas fa-shield-halved"></i>
         </div>
-      </header>
+        <h2 class="font-orbitron text-2xl md:text-3xl font-extrabold gold-text tracking-wider uppercase">
+          ПРАВИЛА SHX 亗
+        </h2>
+        <p class="text-slate-500 text-sm mt-1 font-semibold">Официальный допуск в гильдию Free Fire</p>
 
-      <main>
-        <section class="hero-grid relative overflow-hidden">
-          <div class="mx-auto max-w-7xl px-5 py-20 md:py-28">
-            <div class="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+        <div class="mt-6 space-y-3 text-left text-sm text-slate-700 bg-white/60 p-4 rounded-2xl border border-slate-200/80">
+          <div class="flex items-start gap-3">
+            <i class="fas fa-check-circle text-yellow-600 mt-1"></i>
+            <span>Никнейм в игре строго: <strong class="text-yellow-800 font-orbitron">SHX [ВашНик] 亗</strong></span>
+          </div>
+          <div class="flex items-start gap-3">
+            <i class="fas fa-check-circle text-yellow-600 mt-1"></i>
+            <span>Еженедельная активность и турнирные очки обязательны.</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <i class="fas fa-check-circle text-yellow-600 mt-1"></i>
+            <span>Вход разрешён только игрокам возрастом от <strong>11 лет</strong>.</span>
+          </div>
+        </div>
+
+        <div class="mt-6 text-left">
+          <label class="block font-orbitron text-xs uppercase text-slate-600 tracking-wider mb-2 font-bold">
+            Укажите ваш возраст для входа:
+          </label>
+          <select id="ageSelect" class="glass-input w-full rounded-xl px-4 py-3 text-slate-800 text-sm">
+            <option value="">-- Выберите возраст --</option>
+            <option value="10">10 лет или меньше</option>
+            <option value="11">11 лет</option>
+            <option value="12">12 лет</option>
+            <option value="13">13 лет</option>
+            <option value="14">14 лет</option>
+            <option value="15">15 лет</option>
+            <option value="16">16+ лет</option>
+          </select>
+          <p id="ageWarning" class="hidden mt-2 text-xs font-bold text-rose-600">
+            ❌ Доступ запрещён. Минимальный возраст для вступления — 11 лет.
+          </p>
+        </div>
+
+        <button id="acceptRulesBtn" disabled class="gold-btn w-full mt-6 py-3.5 rounded-xl font-orbitron text-xs uppercase tracking-widest opacity-50 cursor-not-allowed">
+          Принять правила и войти
+        </button>
+      </div>
+    </div>
+
+    <!-- PROMOTION CELEBRATION MODAL (CONFETTI & FIREWORKS) -->
+    <div id="celebrationModal" class="modal-backdrop hidden flex items-center justify-center p-4 z-[200]">
+      <div class="celebrate-box glass-card rounded-3xl max-w-lg w-full p-8 text-center shadow-2xl border-2 border-yellow-400 relative overflow-hidden">
+        <div class="w-20 h-20 mx-auto mb-4 rounded-3xl bg-gradient-to-br from-yellow-300 to-yellow-500 border border-yellow-200 text-yellow-950 flex items-center justify-center text-4xl shadow-lg animate-bounce">
+          🏆
+        </div>
+        <h2 class="font-orbitron text-2xl md:text-3xl font-black gold-text uppercase tracking-wider">
+          ПОЗДРАВЛЯЕМ!
+        </h2>
+        <p id="celebrationSubtext" class="text-slate-700 font-bold text-base mt-2">
+          Новое назначение в гильдии SHX 亗
+        </p>
+
+        <div class="my-6 p-5 rounded-2xl bg-gradient-to-r from-yellow-100/80 via-white to-yellow-100/80 border border-yellow-300">
+          <div id="celebrationPlayerNick" class="font-orbitron font-black text-xl text-yellow-800">SHX PLAYER 亗</div>
+          <div id="celebrationRoleName" class="font-orbitron text-sm font-extrabold uppercase text-slate-700 mt-1">ОФИЦЕР ГИЛЬДИИ</div>
+        </div>
+
+        <button id="closeCelebrationBtn" class="gold-btn w-full py-3.5 rounded-xl font-orbitron text-xs uppercase tracking-widest shadow-xl">
+          УРА! ПРОДОЛЖИТЬ
+        </button>
+      </div>
+    </div>
+
+    <!-- MOBILE TOP BAR -->
+    <div class="md:hidden flex items-center justify-between p-4 bg-white/70 border-b border-slate-200/80 sticky top-0 z-50 backdrop-blur-xl">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-yellow-100 flex items-center justify-center text-yellow-700 border border-yellow-300">
+          <i class="fas fa-crown"></i>
+        </div>
+        <span class="font-orbitron font-black text-xl gold-text tracking-wider">SHX 亗</span>
+      </div>
+      <button id="mobileSidebarToggle" class="p-2 text-slate-700 hover:text-yellow-700 focus:outline-none">
+        <i class="fas fa-bars text-2xl"></i>
+      </button>
+    </div>
+
+    <!-- FIXED LEFT SIDEBAR MENU -->
+    <aside id="sidebar" class="fixed md:sticky top-0 left-0 h-screen w-72 bg-white/70 border-r border-slate-200/80 flex flex-col justify-between z-40 transition-transform duration-300 -translate-x-full md:translate-x-0 backdrop-blur-2xl">
+      <div>
+        <!-- Logo & Guild Founder Header -->
+        <div class="p-6 border-b border-slate-200/70 flex items-center gap-3">
+          <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-yellow-200 to-yellow-400/30 flex items-center justify-center border border-yellow-400 text-yellow-800 text-2xl shadow-sm">
+            <i class="fas fa-crown"></i>
+          </div>
+          <div>
+            <h1 class="font-orbitron font-black text-2xl gold-text tracking-widest">SHX 亗</h1>
+            <p class="text-xs text-slate-500 font-bold">Лидер: <span class="text-yellow-700">ISOJANE 67X</span></p>
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="p-4 space-y-1.5">
+          <div class="px-3 py-2 text-[10px] font-orbitron uppercase text-slate-400 tracking-widest font-bold">Навигация</div>
+
+          <a href="#" data-page="home" class="sidebar-item active flex items-center gap-3.5 px-4 py-3 rounded-xl font-orbitron text-xs tracking-wider uppercase">
+            <i class="fas fa-house text-lg w-5 text-center"></i>
+            <span>Главная</span>
+          </a>
+
+          <a href="#" data-page="players" class="sidebar-item flex items-center gap-3.5 px-4 py-3 rounded-xl font-orbitron text-xs tracking-wider uppercase">
+            <i class="fas fa-users text-lg w-5 text-center"></i>
+            <span>Игроки</span>
+          </a>
+
+          <a href="#" data-page="rules" class="sidebar-item flex items-center gap-3.5 px-4 py-3 rounded-xl font-orbitron text-xs tracking-wider uppercase">
+            <i class="fas fa-scroll text-lg w-5 text-center"></i>
+            <span>Правила</span>
+          </a>
+
+          <a href="#" data-page="join" class="sidebar-item flex items-center gap-3.5 px-4 py-3 rounded-xl font-orbitron text-xs tracking-wider uppercase">
+            <i class="fas fa-user-plus text-lg w-5 text-center"></i>
+            <span>Заявка на вход</span>
+          </a>
+
+          <a href="#" data-page="socials" class="sidebar-item flex items-center gap-3.5 px-4 py-3 rounded-xl font-orbitron text-xs tracking-wider uppercase">
+            <i class="fas fa-share-nodes text-lg w-5 text-center"></i>
+            <span>Telegram & TikTok</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Sidebar Footer / Admin Button -->
+      <div class="p-4 border-t border-slate-200/70">
+        <div class="glass-card p-3 rounded-2xl mb-3 flex items-center justify-between border border-slate-200">
+          <div class="flex items-center gap-2">
+            <div class="status-pulse"></div>
+            <span class="text-xs font-orbitron text-slate-600 font-semibold">НАБОР</span>
+          </div>
+          <span class="text-xs text-emerald-600 font-bold uppercase">ОТКРЫТ</span>
+        </div>
+
+        <button id="sidebarAdminBtn" class="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl border border-yellow-400/80 bg-white/80 text-yellow-800 font-orbitron text-xs uppercase tracking-wider hover:bg-yellow-50 transition-colors shadow-sm">
+          <i class="fas fa-lock text-sm"></i>
+          <span>Меню Админа</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN DASHBOARD CONTENT AREA -->
+    <main class="flex-1 p-4 md:p-8 overflow-y-auto">
+
+      <!-- PAGE: HOME -->
+      <section id="page-home" class="page active space-y-6">
+        <div class="glass-card hero-pattern rounded-3xl p-6 md:p-10 relative overflow-hidden border border-yellow-300/60">
+          <div class="absolute -right-10 -bottom-10 opacity-10 text-yellow-700 text-9xl pointer-events-none font-black font-orbitron">
+            SHX
+          </div>
+          <div class="max-w-2xl relative z-10 space-y-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-100/90 border border-yellow-300 text-yellow-800 font-orbitron text-xs uppercase tracking-widest font-bold">
+              <i class="fas fa-crown text-yellow-600"></i> Official Guild Portal
+            </div>
+            <h1 class="font-orbitron font-black text-4xl md:text-6xl gold-text uppercase leading-none tracking-wider">
+              SHX 亗 CLAN
+            </h1>
+            <p class="text-slate-600 text-base md:text-lg font-medium">
+              Единство. Дисциплина. Киберспорт. Глава гильдии — <span class="text-yellow-800 font-bold">ISOJANE 67X</span> (TikTok: <a href="https://tiktok.com/@sharipov.pc" target="_blank" class="underline hover:text-yellow-600">@sharipov.pc</a>).
+            </p>
+            <div class="flex flex-wrap gap-4 pt-2">
+              <a href="#" data-page="join" class="nav-trigger gold-btn px-6 py-3 rounded-xl font-orbitron text-xs uppercase tracking-wider">
+                Подать заявку
+              </a>
+              <a href="#" data-page="players" class="nav-trigger px-6 py-3 rounded-xl bg-white/80 border border-slate-300 text-slate-700 font-orbitron text-xs uppercase tracking-wider hover:bg-white transition-colors shadow-sm">
+                Состав гильдии
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slider Banners -->
+        <div class="glass-card rounded-3xl p-6 relative border border-slate-200">
+          <div class="slides">
+            <div class="slide active space-y-3">
+              <div class="text-xs font-orbitron text-yellow-700 tracking-widest uppercase font-bold">Информация #1</div>
+              <h3 class="font-orbitron text-2xl font-extrabold text-slate-800">Единый Лидер Гильдии</h3>
+              <p class="text-slate-600 text-sm max-w-2xl">Гильдия находится под управлением основателя <strong>ISOJANE 67X</strong>. Все заявки и редактирование игроков происходят через админ-панель.</p>
+            </div>
+            <div class="slide space-y-3">
+              <div class="text-xs font-orbitron text-yellow-700 tracking-widest uppercase font-bold">Информация #2</div>
+              <h3 class="font-orbitron text-2xl font-bold text-slate-800">Обязательные Контакты</h3>
+              <p class="text-slate-600 text-sm max-w-2xl">При подаче заявки обязательным требованием является наличие Telegram или TikTok аккаунта для обратной связи.</p>
+            </div>
+            <div class="slide space-y-3">
+              <div class="text-xs font-orbitron text-yellow-700 tracking-widest uppercase font-bold">Информация #3</div>
+              <h3 class="font-orbitron text-2xl font-bold text-slate-800">Смена Никнейма</h3>
+              <p class="text-slate-600 text-sm max-w-2xl">Принятые участники обязаны установить игровой префикс <strong>SHX [Ник] 亗</strong>.</p>
+            </div>
+          </div>
+          <div class="flex gap-2 mt-6">
+            <button class="slide-dot w-8 h-2 rounded-full bg-yellow-500 transition-all" data-index="0"></button>
+            <button class="slide-dot w-3 h-2 rounded-full bg-slate-300 transition-all" data-index="1"></button>
+            <button class="slide-dot w-3 h-2 rounded-full bg-slate-300 transition-all" data-index="2"></button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="glass-card p-5 rounded-2xl border border-slate-200">
+            <div class="text-slate-500 font-orbitron text-xs uppercase font-bold">Состав</div>
+            <div id="statTotalPlayers" class="font-orbitron text-2xl font-black gold-text mt-2">1 Игрок</div>
+          </div>
+          <div class="glass-card p-5 rounded-2xl border border-slate-200">
+            <div class="text-slate-500 font-orbitron text-xs uppercase font-bold">Уровень</div>
+            <div class="font-orbitron text-2xl font-black gold-text mt-2">MAX LVL</div>
+          </div>
+          <div class="glass-card p-5 rounded-2xl border border-slate-200">
+            <div class="text-slate-500 font-orbitron text-xs uppercase font-bold">Возраст</div>
+            <div class="font-orbitron text-2xl font-black gold-text mt-2">11+ Лет</div>
+          </div>
+          <div class="glass-card p-5 rounded-2xl border border-slate-200">
+            <div class="text-slate-500 font-orbitron text-xs uppercase font-bold">Регион</div>
+            <div class="font-orbitron text-2xl font-black gold-text mt-2">CIS / RU</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE: PLAYERS (SINGLE COLUMN SORTED LIST BY HIERARCHY) -->
+      <section id="page-players" class="page space-y-6">
+        <div>
+          <h2 class="font-orbitron text-2xl font-black gold-text uppercase tracking-wider">Состав Гильдии SHX 亗</h2>
+          <p class="text-slate-500 text-sm">Все участники гильдии в порядке рангов (Лидер ➔ Временный лидер ➔ Офицеры ➔ Игроки)</p>
+        </div>
+
+        <!-- SINGLE COLUMN ROSTER CONTAINER -->
+        <div id="rosterContainer" class="max-w-3xl space-y-4">
+          <!-- Dynamically populated via JS -->
+        </div>
+      </section>
+
+      <!-- PAGE: RULES -->
+      <section id="page-rules" class="page space-y-6">
+        <div>
+          <h2 class="font-orbitron text-2xl font-black gold-text uppercase tracking-wider">Устав и Правила</h2>
+          <p class="text-slate-500 text-sm">Свод обязательных требований SHX 亗</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="glass-card p-6 rounded-3xl space-y-3 border border-slate-200">
+            <div class="w-10 h-10 rounded-xl bg-yellow-100 border border-yellow-300 text-yellow-800 flex items-center justify-center font-orbitron font-bold">01</div>
+            <h3 class="font-orbitron text-lg font-bold text-slate-800">Игровой Никнейм</h3>
+            <p class="text-slate-600 text-sm">Каждый игрок после одобрения заявки обязан установить игровой префикс <strong>SHX [ВашНик] 亗</strong>.</p>
+          </div>
+
+          <div class="glass-card p-6 rounded-3xl space-y-3 border border-slate-200">
+            <div class="w-10 h-10 rounded-xl bg-yellow-100 border border-yellow-300 text-yellow-800 flex items-center justify-center font-orbitron font-bold">02</div>
+            <h3 class="font-orbitron text-lg font-bold text-slate-800">Возрастное Ограничение</h3>
+            <p class="text-slate-600 text-sm">Минимальный возраст участника — <strong>11 лет</strong>. В случае обмана при указании возраста — исключение.</p>
+          </div>
+
+          <div class="glass-card p-6 rounded-3xl space-y-3 border border-slate-200">
+            <div class="w-10 h-10 rounded-xl bg-yellow-100 border border-yellow-300 text-yellow-800 flex items-center justify-center font-orbitron font-bold">03</div>
+            <h3 class="font-orbitron text-lg font-bold text-slate-800">Активность и Очки</h3>
+            <p class="text-slate-600 text-sm">Еженедельный набор очков гильдии. Админ может редактировать ваши очки в общем составе.</p>
+          </div>
+
+          <div class="glass-card p-6 rounded-3xl space-y-3 border border-slate-200">
+            <div class="w-10 h-10 rounded-xl bg-yellow-100 border border-yellow-300 text-yellow-800 flex items-center justify-center font-orbitron font-bold">04</div>
+            <h3 class="font-orbitron text-lg font-bold text-slate-800">Обратная Связь</h3>
+            <p class="text-slate-600 text-sm">Обязательное наличие активного Telegram или TikTok для коммуникации с лидером.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAGE: JOIN REQUEST -->
+      <section id="page-join" class="page space-y-6">
+        <div>
+          <h2 class="font-orbitron text-2xl font-black gold-text uppercase tracking-wider">Заявка на Вступление</h2>
+          <p class="text-slate-500 text-sm">Заполните анкету (Обязательно укажите Telegram ИЛИ TikTok)</p>
+        </div>
+
+        <div class="glass-card rounded-3xl p-6 md:p-8 max-w-2xl border border-yellow-300/70 shadow-md">
+          <form id="guildJoinForm" class="space-y-4">
+            <div>
+              <label class="block font-orbitron text-xs uppercase text-slate-600 tracking-wider mb-2 font-bold">Никнейм в Free Fire *</label>
+              <input type="text" id="joinNick" required placeholder="Например: ISKO" class="glass-input w-full rounded-xl px-4 py-3 text-sm" />
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-4">
               <div>
-                <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-yellow-500/30 bg-yellow-500/8 px-4 py-2 text-[10px] font-orbitron uppercase tracking-[0.2em] text-yellow-300">
-                  <span class="h-2 w-2 rounded-full bg-green-400"></span>
-                  Official esports guild
-                </div>
-
-                <h1 class="font-orbitron text-5xl font-black leading-none tracking-[0.14em] text-white md:text-7xl gold-text">
-                  SHX 亗
-                </h1>
-
-                <p class="mt-6 max-w-xl text-xl text-slate-300 md:text-2xl">
-                  One squad. One family. One legend.
-                </p>
-
-                <div class="mt-8 flex flex-wrap gap-4">
-                  <a href="#join" class="btn-gold rounded-xl px-6 py-3 font-orbitron text-sm uppercase tracking-[0.14em]">
-                    Apply now
-                  </a>
-                  <a href="#leaderboard" class="rounded-xl border border-yellow-500/35 bg-transparent px-6 py-3 font-orbitron text-sm uppercase tracking-[0.14em] text-yellow-300 hover:bg-yellow-500/8">
-                    View board
-                  </a>
-                </div>
-
-                <div class="mt-10 grid max-w-xl gap-4 sm:grid-cols-3">
-                  <div class="glass rounded-2xl p-4">
-                    <div class="font-orbitron text-3xl font-black gold-text">120+</div>
-                    <div class="text-sm uppercase tracking-[0.12em] text-slate-400">Players</div>
-                  </div>
-                  <div class="glass rounded-2xl p-4">
-                    <div class="font-orbitron text-3xl font-black gold-text">18</div>
-                    <div class="text-sm uppercase tracking-[0.12em] text-slate-400">Weekly events</div>
-                  </div>
-                  <div class="glass rounded-2xl p-4">
-                    <div class="font-orbitron text-3xl font-black gold-text">#1</div>
-                    <div class="text-sm uppercase tracking-[0.12em] text-slate-400">Ambition</div>
-                  </div>
-                </div>
+                <label class="block font-orbitron text-xs uppercase text-slate-600 tracking-wider mb-2 font-bold">Free Fire ID *</label>
+                <input type="number" id="joinFFID" required placeholder="123456789" class="glass-input w-full rounded-xl px-4 py-3 text-sm" />
               </div>
-
-              <div class="glass rounded-[28px] p-5 border border-yellow-500/25">
-                <div class="rounded-2xl border border-yellow-500/30 bg-[#0b1220] p-5">
-                  <div class="mb-5 flex items-center justify-between">
-                    <div class="font-orbitron text-xs uppercase tracking-[0.18em] text-yellow-300">Guild status</div>
-                    <div class="flex items-center gap-2 text-xs uppercase tracking-[0.12em] text-green-400">
-                      <span class="h-2.5 w-2.5 rounded-full bg-green-400"></span>
-                      online
-                    </div>
-                  </div>
-
-                  <div class="space-y-4">
-                    <div class="flex items-center justify-between rounded-xl bg-slate-900/60 p-3">
-                      <span class="text-slate-400">Leaderboard rank</span>
-                      <span class="font-orbitron text-xl font-black gold-text">#12</span>
-                    </div>
-                    <div class="flex items-center justify-between rounded-xl bg-slate-900/60 p-3">
-                      <span class="text-slate-400">Season points</span>
-                      <span class="font-orbitron text-xl font-black gold-text">4,820</span>
-                    </div>
-                    <div class="flex items-center justify-between rounded-xl bg-slate-900/60 p-3">
-                      <span class="text-slate-400">Active squads</span>
-                      <span class="font-orbitron text-xl font-black gold-text">08</span>
-                    </div>
-                  </div>
-
-                  <div class="mt-6 border-t border-yellow-500/20 pt-4">
-                    <div class="font-orbitron text-[10px] uppercase tracking-[0.2em] text-slate-400">Featured reward</div>
-                    <div class="mt-2 text-2xl font-black gold-text">Best soft prize</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="about" class="mx-auto max-w-7xl px-5 py-20">
-          <div class="mb-8 text-center">
-            <span class="panel-title badge">About guild</span>
-          </div>
-
-          <div class="grid gap-6 md:grid-cols-3">
-            <div class="glass rounded-3xl p-6">
-              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-yellow-500/30 bg-yellow-500/10 text-yellow-300">
-                <i class="fas fa-users"></i>
-              </div>
-              <h3 class="font-orbitron text-xl font-bold uppercase tracking-[0.12em] text-white">Teamwork</h3>
-              <p class="mt-3 text-lg text-slate-300">
-                We grow together through discipline, strategy, and shared goals.
-              </p>
-            </div>
-
-            <div class="glass rounded-3xl p-6">
-              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-yellow-500/30 bg-yellow-500/10 text-yellow-300">
-                <i class="fas fa-trophy"></i>
-              </div>
-              <h3 class="font-orbitron text-xl font-bold uppercase tracking-[0.12em] text-white">Competition</h3>
-              <p class="mt-3 text-lg text-slate-300">
-                Every week we push harder, earn points, and stay sharp for the next battle.
-              </p>
-            </div>
-
-            <div class="glass rounded-3xl p-6">
-              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-yellow-500/30 bg-yellow-500/10 text-yellow-300">
-                <i class="fas fa-crown"></i>
-              </div>
-              <h3 class="font-orbitron text-xl font-bold uppercase tracking-[0.12em] text-white">Legacy</h3>
-              <p class="mt-3 text-lg text-slate-300">
-                SHX 亗 is built for players who want to become part of something bigger than themselves.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section id="leaderboard" class="mx-auto max-w-7xl px-5 py-5">
-          <div class="mb-8 text-center">
-            <span class="panel-title badge">Leaderboard</span>
-          </div>
-
-          <div class="grid gap-6 md:grid-cols-3">
-            <div class="glass rounded-3xl p-6 text-center">
-              <div class="text-4xl">🥇</div>
-              <div class="mt-4 font-orbitron text-xs uppercase tracking-[0.12em] text-slate-400">Top 1</div>
-              <div class="mt-2 text-2xl font-black gold-text">ISOJANE 67X</div>
-              <div class="mt-2 text-slate-300">5,900 pts</div>
-            </div>
-            <div class="glass rounded-3xl p-6 text-center">
-              <div class="text-4xl">🥈</div>
-              <div class="mt-4 font-orbitron text-xs uppercase tracking-[0.12em] text-slate-400">Top 2</div>
-              <div class="mt-2 text-2xl font-black gold-text">M4RK</div>
-              <div class="mt-2 text-slate-300">4,930 pts</div>
-            </div>
-            <div class="glass rounded-3xl p-6 text-center">
-              <div class="text-4xl">🥉</div>
-              <div class="mt-4 font-orbitron text-xs uppercase tracking-[0.12em] text-slate-400">Top 3</div>
-              <div class="mt-2 text-2xl font-black gold-text">RAVEN</div>
-              <div class="mt-2 text-slate-300">4,760 pts</div>
-            </div>
-          </div>
-        </section>
-
-        <section id="rules" class="mx-auto max-w-6xl px-5 py-20">
-          <div class="mb-8 text-center">
-            <span class="panel-title badge">Guild rules</span>
-          </div>
-
-          <div class="glass rounded-3xl p-8">
-            <div class="grid gap-6 md:grid-cols-3">
-              <div class="rounded-2xl border border-yellow-500/20 bg-slate-900/40 p-5">
-                <div class="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-500/10 text-xl text-yellow-300">01</div>
-                <h4 class="font-orbitron text-lg uppercase tracking-[0.12em] text-yellow-300">Nick format</h4>
-                <p class="mt-3 text-slate-300">All members must use the format SHX [YourNick] 亗.</p>
-              </div>
-
-              <div class="rounded-2xl border border-yellow-500/20 bg-slate-900/40 p-5">
-                <div class="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-500/10 text-xl text-yellow-300">02</div>
-                <h4 class="font-orbitron text-lg uppercase tracking-[0.12em] text-yellow-300">Weekly activity</h4>
-                <p class="mt-3 text-slate-300">Earn points and stay active every week to keep your place.</p>
-              </div>
-
-              <div class="rounded-2xl border border-yellow-500/20 bg-slate-900/40 p-5">
-                <div class="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-500/10 text-xl text-yellow-300">03</div>
-                <h4 class="font-orbitron text-lg uppercase tracking-[0.12em] text-yellow-300">Age policy</h4>
-                <p class="mt-3 text-slate-300">Players must be 11 years old or above to join.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="join" class="mx-auto max-w-5xl px-5 pb-20">
-          <div class="mb-8 text-center">
-            <span class="panel-title badge">Apply</span>
-          </div>
-
-          <div class="glass rounded-3xl p-6 md:p-10">
-            <form class="grid gap-5 md:grid-cols-2">
               <div>
-                <label class="mb-2 block font-orbitron text-[11px] uppercase tracking-[0.2em] text-yellow-300">Nickname</label>
-                <input type="text" placeholder="Example: ISKO" class="w-full rounded-xl border border-yellow-500/25 bg-slate-900/70 px-4 py-3 text-white outline-none ring-0 placeholder:text-slate-500" />
-              </div>
-
-              <div>
-                <label class="mb-2 block font-orbitron text-[11px] uppercase tracking-[0.2em] text-yellow-300">Role</label>
-                <select class="w-full rounded-xl border border-yellow-500/25 bg-slate-900/70 px-4 py-3 text-white outline-none">
-                  <option>Officer</option>
-                  <option>Temporary leader</option>
-                  <option>Regular player</option>
+                <label class="block font-orbitron text-xs uppercase text-slate-600 tracking-wider mb-2 font-bold">Претендуемая Роль</label>
+                <select id="joinRole" class="glass-input w-full rounded-xl px-4 py-3 text-sm">
+                  <option value="Простой игрок">Простой игрок</option>
+                  <option value="Офицер">Офицер</option>
+                  <option value="Временный лидер">Временный лидер</option>
                 </select>
               </div>
+            </div>
 
-              <div>
-                <label class="mb-2 block font-orbitron text-[11px] uppercase tracking-[0.2em] text-yellow-300">FF ID</label>
-                <input type="text" placeholder="123456789" class="w-full rounded-xl border border-yellow-500/25 bg-slate-900/70 px-4 py-3 text-white outline-none placeholder:text-slate-500" />
-              </div>
+            <div class="p-4 rounded-2xl bg-yellow-50/80 border border-yellow-200 space-y-3">
+              <span class="block font-orbitron text-xs uppercase text-yellow-800 tracking-wider font-bold">
+                ⚠️ Укажите хотя бы один контакт (Telegram или TikTok):
+              </span>
 
-              <div>
-                <label class="mb-2 block font-orbitron text-[11px] uppercase tracking-[0.2em] text-yellow-300">Telegram</label>
-                <input type="text" placeholder="@username" class="w-full rounded-xl border border-yellow-500/25 bg-slate-900/70 px-4 py-3 text-white outline-none placeholder:text-slate-500" />
+              <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs text-slate-600 mb-1 font-semibold"><i class="fab fa-telegram text-blue-500"></i> Telegram username</label>
+                  <input type="text" id="joinTG" placeholder="@username" class="glass-input w-full rounded-xl px-4 py-2.5 text-sm" />
+                </div>
+                <div>
+                  <label class="block text-xs text-slate-600 mb-1 font-semibold"><i class="fab fa-tiktok text-black"></i> TikTok username</label>
+                  <input type="text" id="joinTT" placeholder="@sharipov.pc" class="glass-input w-full rounded-xl px-4 py-2.5 text-sm" />
+                </div>
               </div>
+              <p id="contactWarning" class="hidden text-xs font-bold text-red-600">
+                ❌ Вы должны указать ХОТЯ БЫ Telegram или TikTok!
+              </p>
+            </div>
 
-              <div class="md:col-span-2">
-                <label class="mb-2 block font-orbitron text-[11px] uppercase tracking-[0.2em] text-yellow-300">Tiktok</label>
-                <input type="text" placeholder="@username" class="w-full rounded-xl border border-yellow-500/25 bg-slate-900/70 px-4 py-3 text-white outline-none placeholder:text-slate-500" />
-              </div>
+            <button type="submit" class="gold-btn w-full py-4 rounded-xl font-orbitron text-xs uppercase tracking-widest mt-4">
+              Отправить заявку в SHX 亗
+            </button>
+          </form>
+        </div>
+      </section>
 
-              <div class="md:col-span-2 flex justify-center pt-4">
-                <button type="button" class="btn-gold rounded-xl px-8 py-3 font-orbitron text-sm uppercase tracking-[0.14em]">
-                  Send request
-                </button>
-              </div>
-            </form>
+      <!-- PAGE: SOCIALS -->
+      <section id="page-socials" class="page space-y-6">
+        <div>
+          <h2 class="font-orbitron text-2xl font-black gold-text uppercase tracking-wider">Telegram & TikTok</h2>
+          <p class="text-slate-500 text-sm">Официальные ресурсы лидерства SHX 亗</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="glass-card p-6 rounded-3xl border border-slate-200 space-y-4">
+            <div class="flex items-center gap-3 text-blue-500">
+              <i class="fab fa-telegram text-3xl"></i>
+              <h3 class="font-orbitron text-xl font-bold text-slate-800">Telegram Контакты</h3>
+            </div>
+            <ul class="space-y-3 text-sm text-slate-700">
+              <li class="flex items-center gap-3 p-3 rounded-xl bg-white/60 border border-slate-100">
+                <i class="fas fa-crown text-yellow-600"></i> Глава: <strong>@isojane67x</strong>
+              </li>
+              <li class="flex items-center gap-3 p-3 rounded-xl bg-white/60 border border-slate-100">
+                <i class="fas fa-headset text-yellow-600"></i> Поддержка: <strong>@shx_guild_support</strong>
+              </li>
+            </ul>
           </div>
-        </section>
-      </main>
 
-      <footer class="border-t border-yellow-500/20 bg-[#060d17]">
-        <div class="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-8 text-center text-slate-400 md:flex-row md:items-center md:justify-between md:text-left">
-          <div>
-            <div class="font-orbitron text-lg font-black gold-text">SHX 亗</div>
-            <p class="mt-1 text-sm">Esports guild landing page</p>
-          </div>
-
-          <div class="flex items-center gap-4 text-sm">
-            <a href="#about" class="hover:text-yellow-300">About</a>
-            <a href="#leaderboard" class="hover:text-yellow-300">Leaderboard</a>
-            <a href="#join" class="hover:text-yellow-300">Apply</a>
+          <div class="glass-card p-6 rounded-3xl border border-slate-200 space-y-4">
+            <div class="flex items-center gap-3 text-slate-900">
+              <i class="fab fa-tiktok text-3xl"></i>
+              <h3 class="font-orbitron text-xl font-bold text-slate-800">TikTok Лидера</h3>
+            </div>
+            <ul class="space-y-3 text-sm text-slate-700">
+              <li class="flex items-center gap-3 p-3 rounded-xl bg-white/60 border border-slate-100">
+                <i class="fas fa-video text-yellow-600"></i> Личный TikTok: <a href="https://tiktok.com/@sharipov.pc" target="_blank" class="font-bold text-yellow-800 hover:underline">@sharipov.pc</a>
+              </li>
+              <li class="flex items-center gap-3 p-3 rounded-xl bg-white/60 border border-slate-100">
+                <i class="fas fa-gamepad text-yellow-600"></i> Гильдийский: <strong>@shx.official</strong>
+              </li>
+            </ul>
           </div>
         </div>
-      </footer>
+      </section>
+
+    </main>
+
+    <!-- ADMIN LOGIN MODAL -->
+    <div id="adminModal" class="modal-backdrop hidden flex items-center justify-center p-4">
+      <div class="glass-card rounded-3xl max-w-md w-full p-6 md:p-8 border border-yellow-400 text-center shadow-2xl">
+        <div class="w-14 h-14 mx-auto mb-4 rounded-2xl bg-yellow-100 border border-yellow-300 text-yellow-700 flex items-center justify-center text-2xl shadow-sm">
+          <i class="fas fa-lock"></i>
+        </div>
+        <h3 class="font-orbitron text-xl font-extrabold gold-text uppercase">Вход в Админ Панель</h3>
+        <p class="text-slate-500 text-xs mt-1">Пароль по умолчанию: <strong>2216</strong></p>
+
+        <input type="password" id="adminPassInput" placeholder="Пароль доступа..." class="glass-input w-full mt-6 rounded-xl px-4 py-3 text-center text-sm" />
+
+        <div class="flex gap-3 mt-6">
+          <button id="closeAdminModalBtn" class="w-1/2 py-3 rounded-xl bg-slate-200 text-slate-700 font-orbitron text-xs uppercase font-bold">Отмена</button>
+          <button id="loginAdminBtn" class="gold-btn w-1/2 py-3 rounded-xl font-orbitron text-xs uppercase">Войти</button>
+        </div>
+      </div>
     </div>
+
+    <!-- ADMIN PANEL OVERLAY (EDIT PLAYERS, PROMOTIONS, APPLICANTS) -->
+    <div id="adminPanel" class="fixed inset-0 z-50 hidden bg-white/90 backdrop-blur-2xl p-4 md:p-8 overflow-y-auto">
+      <div class="max-w-5xl mx-auto space-y-6">
+        <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+          <div>
+            <h2 class="font-orbitron text-2xl font-black gold-text uppercase">Управление Гильдией (Админ)</h2>
+            <p class="text-slate-500 text-xs">Администратор: ISOJANE 67X (Sharipov)</p>
+          </div>
+          <button id="closeAdminPanelBtn" class="px-4 py-2 rounded-xl bg-slate-200 text-slate-700 font-orbitron text-xs uppercase font-bold hover:bg-slate-300">
+            Закрыть Панель
+          </button>
+        </div>
+
+        <!-- Section 1: Manage Active Guild Players (Edit ID, Points, Rank) -->
+        <div class="glass-card p-6 rounded-3xl border border-slate-200 space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="font-orbitron text-sm uppercase text-yellow-800 tracking-wider font-bold">
+              <i class="fas fa-user-gear mr-2"></i> Редактирование Участников Состава
+            </div>
+            <span class="text-xs text-slate-500">Меняйте ID, Звания и Очки игрокам</span>
+          </div>
+
+          <div id="adminPlayersList" class="space-y-4">
+            <!-- Dynamically populated via JS -->
+          </div>
+        </div>
+
+        <!-- Section 2: Manage Incoming Applicants -->
+        <div class="glass-card p-6 rounded-3xl border border-slate-200 space-y-4">
+          <div class="font-orbitron text-sm uppercase text-yellow-800 tracking-wider font-bold">
+            <i class="fas fa-inbox mr-2"></i> Входящие Заявки На Вступление
+          </div>
+          <div id="applicantsList" class="space-y-3">
+            <!-- Dynamic Applicant Cards -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOTIFICATION TOAST -->
+    <div id="toast" class="fixed bottom-5 right-5 z-[210] hidden glass-card border border-yellow-400 text-yellow-900 font-bold px-6 py-3 rounded-2xl font-orbitron text-xs uppercase tracking-wider shadow-2xl">
+      Сообщение
+    </div>
+
+    <script>
+      const STORAGE_KEY = "SHX_GUILD_LIGHT_V2";
+      const ADMIN_PASS = "2216";
+
+      // Hierarchy weights for sorting
+      const ROLE_RANK = {
+        "Глава Гильдии": 1,
+        "Временный лидер": 2,
+        "Офицер": 3,
+        "Простой игрок": 4
+      };
+
+      const defaultData = {
+        players: [
+          {
+            id: 1,
+            nick: "ISOJANE 67X",
+            role: "Глава Гильдии",
+            ffid: "77777777",
+            points: 15400,
+            tg: "@isojane67x",
+            tt: "@sharipov.pc"
+          }
+        ],
+        applicants: []
+      };
+
+      const getData = () => {
+        try {
+          const saved = localStorage.getItem(STORAGE_KEY);
+          return saved ? JSON.parse(saved) : defaultData;
+        } catch (e) {
+          return defaultData;
+        }
+      };
+
+      const saveData = (data) => {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      };
+
+      const showToast = (msg) => {
+        const toast = document.getElementById('toast');
+        toast.innerText = msg;
+        toast.classList.remove('hidden');
+        setTimeout(() => toast.classList.add('hidden'), 3000);
+      };
+
+      // Confetti & Fireworks Trigger
+      function launchFireworks(playerNick, newRole) {
+        document.getElementById('celebrationPlayerNick').innerText = playerNick;
+        document.getElementById('celebrationRoleName').innerText = newRole.toUpperCase();
+        document.getElementById('celebrationModal').classList.remove('hidden');
+
+        // Confetti explosions
+        if (typeof confetti === 'function') {
+          const count = 200;
+          const defaults = { origin: { y: 0.7 } };
+
+          function fire(particleRatio, opts) {
+            confetti(Object.assign({}, defaults, opts, {
+              particleCount: Math.floor(count * particleRatio)
+            }));
+          }
+
+          fire(0.25, { spread: 26, startVelocity: 55, colors: ['#f9e88d', '#e7c65a'] });
+          fire(0.2, { spread: 60, colors: ['#ffffff', '#bc8b21'] });
+          fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+          fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, colors: ['#ffd700', '#24c77d'] });
+          fire(0.1, { spread: 120, startVelocity: 45 });
+        }
+      }
+
+      document.getElementById('closeCelebrationBtn').addEventListener('click', () => {
+        document.getElementById('celebrationModal').classList.add('hidden');
+      });
+
+      function renderRoster() {
+        const container = document.getElementById('rosterContainer');
+        const store = getData();
+
+        // Update stats
+        document.getElementById('statTotalPlayers').innerText = `${store.players.length} Игр.`;
+
+        // Sort players top-down by hierarchy
+        const sorted = [...store.players].sort((a, b) => {
+          const rankA = ROLE_RANK[a.role] || 99;
+          const rankB = ROLE_RANK[b.role] || 99;
+          return rankA - rankB;
+        });
+
+        container.innerHTML = sorted.map((p, idx) => {
+          let badgeColor = "bg-slate-100 text-slate-700 border-slate-300";
+          let icon = "⚔️";
+
+          if (p.role === "Глава Гильдии") {
+            badgeColor = "bg-yellow-100 text-yellow-900 border-yellow-400 font-extrabold";
+            icon = "👑";
+          } else if (p.role === "Временный лидер") {
+            badgeColor = "bg-amber-100 text-amber-900 border-amber-400 font-bold";
+            icon = "⚡";
+          } else if (p.role === "Офицер") {
+            badgeColor = "bg-blue-100 text-blue-900 border-blue-400 font-bold";
+            icon = "🛡️";
+          }
+
+          return `
+            <div class="glass-card rounded-2xl p-5 border border-slate-200/90 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm hover:border-yellow-300 transition-all">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-yellow-100 to-white border border-yellow-300 flex items-center justify-center text-2xl shadow-sm">
+                  ${icon}
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="font-orbitron font-black text-lg text-slate-800">${p.nick}</span>
+                    <span class="text-xs px-2.5 py-0.5 rounded-full border ${badgeColor} font-orbitron">${p.role}</span>
+                  </div>
+                  <div class="text-xs text-slate-500 font-semibold mt-1">
+                    FF ID: <span class="text-slate-800 font-bold">${p.ffid || 'Не указан'}</span>
+                    ${p.tg !== '—' ? ` | TG: <span class="text-blue-600 font-bold">${p.tg}</span>` : ''}
+                    ${p.tt !== '—' ? ` | TT: <span class="text-slate-900 font-bold">${p.tt}</span>` : ''}
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3 border-t sm:border-t-0 pt-3 sm:pt-0 border-slate-100">
+                <div class="bg-yellow-50/80 px-4 py-2 rounded-xl border border-yellow-200 text-right">
+                  <div class="text-[10px] font-orbitron uppercase text-slate-400 font-bold">Очки гильдии</div>
+                  <div class="font-orbitron font-black text-amber-700 text-base">${p.points || 0} pts</div>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      function renderAdminPanel() {
+        const playersList = document.getElementById('adminPlayersList');
+        const applicantsList = document.getElementById('applicantsList');
+        const store = getData();
+
+        // 1. Render Active Players with Edit Controls
+        playersList.innerHTML = store.players.map(p => `
+          <div class="p-4 rounded-2xl bg-white/90 border border-slate-200 space-y-3 shadow-sm">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-2">
+              <div class="font-orbitron font-extrabold text-sm text-yellow-800 flex items-center gap-2">
+                <span>${p.nick}</span>
+                <span class="text-[10px] px-2 py-0.5 rounded bg-yellow-100 text-yellow-800 font-normal">${p.role}</span>
+              </div>
+              ${p.role !== 'Глава Гильдии' ? `
+                <button onclick="removePlayer(${p.id})" class="text-xs text-rose-600 font-bold hover:underline">
+                  <i class="fas fa-trash-can mr-1"></i>Исключить
+                </button>
+              ` : '<span class="text-xs text-yellow-700 font-bold">Основатель</span>'}
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+              <div>
+                <label class="block text-[10px] font-orbitron uppercase text-slate-500 font-bold mb-1">Никнейм</label>
+                <input type="text" value="${p.nick}" onchange="updatePlayerField(${p.id}, 'nick', this.value)" class="glass-input w-full text-xs rounded-lg px-2.5 py-1.5" />
+              </div>
+              <div>
+                <label class="block text-[10px] font-orbitron uppercase text-slate-500 font-bold mb-1">FF ID</label>
+                <input type="number" value="${p.ffid || ''}" onchange="updatePlayerField(${p.id}, 'ffid', this.value)" class="glass-input w-full text-xs rounded-lg px-2.5 py-1.5" />
+              </div>
+              <div>
+                <label class="block text-[10px] font-orbitron uppercase text-slate-500 font-bold mb-1">Очки</label>
+                <input type="number" value="${p.points || 0}" onchange="updatePlayerField(${p.id}, 'points', parseInt(this.value)||0)" class="glass-input w-full text-xs rounded-lg px-2.5 py-1.5" />
+              </div>
+              <div>
+                <label class="block text-[10px] font-orbitron uppercase text-slate-500 font-bold mb-1">Роль / Должность</label>
+                <select onchange="updatePlayerRole(${p.id}, this.value)" class="glass-input w-full text-xs rounded-lg px-2.5 py-1.5">
+                  <option value="Простой игрок" ${p.role==='Простой игрок'?'selected':''}>Простой игрок</option>
+                  <option value="Офицер" ${p.role==='Офицер'?'selected':''}>Офицер</option>
+                  <option value="Временный лидер" ${p.role==='Временный лидер'?'selected':''}>Временный лидер</option>
+                  <option value="Глава Гильдии" ${p.role==='Глава Гильдии'?'selected':''}>Глава Гильдии</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        `).join('');
+
+        // 2. Render Incoming Applicants
+        if (!store.applicants.length) {
+          applicantsList.innerHTML = `<div class="text-slate-500 text-sm py-4">Нет новых заявок</div>`;
+          return;
+        }
+
+        applicantsList.innerHTML = store.applicants.map(app => `
+          <div class="p-4 rounded-2xl bg-white/90 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-sm">
+            <div class="space-y-1">
+              <div class="font-orbitron text-sm font-bold text-yellow-800">${app.nick}</div>
+              <div class="text-xs text-slate-500">FF ID: <strong class="text-slate-800">${app.ffid}</strong> | Желаемая Роль: <strong class="text-slate-800">${app.role}</strong></div>
+              <div class="text-xs text-slate-500">TG: <strong class="text-slate-700">${app.tg}</strong> | TT: <strong class="text-slate-700">${app.tt}</strong></div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="handleApplicant(${app.id}, 'approve')" class="px-3 py-1.5 rounded-lg bg-emerald-100 border border-emerald-300 text-emerald-800 text-xs font-orbitron uppercase font-bold hover:bg-emerald-200">Принять в клан</button>
+              <button onclick="handleApplicant(${app.id}, 'reject')" class="px-3 py-1.5 rounded-lg bg-rose-100 border border-rose-300 text-rose-800 text-xs font-orbitron uppercase font-bold hover:bg-rose-200">Отклонить</button>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      window.updatePlayerField = (id, field, val) => {
+        const store = getData();
+        const p = store.players.find(x => x.id === id);
+        if (p) {
+          p[field] = val;
+          saveData(store);
+          renderRoster();
+          showToast("Сохранено!");
+        }
+      };
+
+      window.updatePlayerRole = (id, newRole) => {
+        const store = getData();
+        const p = store.players.find(x => x.id === id);
+        if (p) {
+          const oldRole = p.role;
+          p.role = newRole;
+          saveData(store);
+          renderRoster();
+          renderAdminPanel();
+
+          // Trigger Fireworks if promoted to Officer or Temp Leader!
+          if ((newRole === "Офицер" || newRole === "Временный лидер") && oldRole !== newRole) {
+            launchFireworks(p.nick, newRole);
+          } else {
+            showToast("Роль обновлена");
+          }
+        }
+      };
+
+      window.removePlayer = (id) => {
+        if (!confirm("Исключить игрока из гильдии?")) return;
+        const store = getData();
+        store.players = store.players.filter(x => x.id !== id);
+        saveData(store);
+        renderRoster();
+        renderAdminPanel();
+        showToast("Игрок исключен");
+      };
+
+      window.handleApplicant = (id, action) => {
+        const store = getData();
+        const app = store.applicants.find(a => a.id === id);
+
+        if (action === 'approve' && app) {
+          // Add to official players list
+          store.players.push({
+            id: Date.now(),
+            nick: app.nick,
+            role: app.role || "Простой игрок",
+            ffid: app.ffid,
+            points: 100,
+            tg: app.tg,
+            tt: app.tt
+          });
+
+          if (app.role === "Офицер" || app.role === "Временный лидер") {
+            launchFireworks(app.nick, app.role);
+          }
+        }
+
+        store.applicants = store.applicants.filter(a => a.id !== id);
+        saveData(store);
+        renderRoster();
+        renderAdminPanel();
+        showToast(action === 'approve' ? 'Игрок добавлен в состав!' : 'Заявка отклонена');
+      };
+
+      function switchPage(pageId) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+
+        const targetPage = document.getElementById(`page-${pageId}`);
+        if (targetPage) targetPage.classList.add('active');
+
+        const activeNavItem = document.querySelector(`.sidebar-item[data-page="${pageId}"]`);
+        if (activeNavItem) activeNavItem.classList.add('active');
+
+        document.getElementById('sidebar').classList.add('-translate-x-full');
+      }
+
+      document.querySelectorAll('[data-page], .nav-trigger').forEach(el => {
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          const page = el.getAttribute('data-page');
+          if (page) switchPage(page);
+        });
+      });
+
+      document.getElementById('mobileSidebarToggle').addEventListener('click', () => {
+        document.getElementById('sidebar').classList.toggle('-translate-x-full');
+      });
+
+      // Age Gate Logic
+      const ageSelect = document.getElementById('ageSelect');
+      const acceptRulesBtn = document.getElementById('acceptRulesBtn');
+      const ageWarning = document.getElementById('ageWarning');
+
+      ageSelect.addEventListener('change', () => {
+        const val = parseInt(ageSelect.value);
+        if (!val) {
+          acceptRulesBtn.disabled = true;
+          acceptRulesBtn.classList.add('opacity-50', 'cursor-not-allowed');
+          ageWarning.classList.add('hidden');
+        } else if (val >= 11) {
+          acceptRulesBtn.disabled = false;
+          acceptRulesBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+          ageWarning.classList.add('hidden');
+        } else {
+          acceptRulesBtn.disabled = true;
+          acceptRulesBtn.classList.add('opacity-50', 'cursor-not-allowed');
+          ageWarning.classList.remove('hidden');
+        }
+      });
+
+      acceptRulesBtn.addEventListener('click', () => {
+        document.getElementById('rulesModal').classList.add('hidden');
+      });
+
+      // Slide Banner Logic
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.slide-dot');
+      let currentSlide = 0;
+
+      function setSlide(idx) {
+        slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+        dots.forEach((d, i) => {
+          if (i === idx) {
+            d.classList.replace('w-3', 'w-8');
+            d.classList.replace('bg-slate-300', 'bg-yellow-500');
+          } else {
+            d.classList.replace('w-8', 'w-3');
+            d.classList.replace('bg-yellow-500', 'bg-slate-300');
+          }
+        });
+        currentSlide = idx;
+      }
+
+      dots.forEach(d => {
+        d.addEventListener('click', () => setSlide(parseInt(d.dataset.index)));
+      });
+
+      setInterval(() => {
+        setSlide((currentSlide + 1) % slides.length);
+      }, 3500);
+
+      // Join Form Logic
+      document.getElementById('guildJoinForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nick = document.getElementById('joinNick').value.trim();
+        const ffid = document.getElementById('joinFFID').value.trim();
+        const role = document.getElementById('joinRole').value;
+        const tg = document.getElementById('joinTG').value.trim();
+        const tt = document.getElementById('joinTT').value.trim();
+        const contactWarning = document.getElementById('contactWarning');
+
+        if (!tg && !tt) {
+          contactWarning.classList.remove('hidden');
+          return;
+        } else {
+          contactWarning.classList.add('hidden');
+        }
+
+        const formattedNick = nick.startsWith('SHX') ? nick : `SHX ${nick} 亗`;
+
+        const newApplicant = {
+          id: Date.now(),
+          nick: formattedNick,
+          ffid,
+          role,
+          tg: tg ? tg : '—',
+          tt: tt ? tt : '—'
+        };
+
+        const store = getData();
+        store.applicants.push(newApplicant);
+        saveData(store);
+
+        document.getElementById('guildJoinForm').reset();
+        showToast('Заявка отправлена лидеру!');
+      });
+
+      // Admin Modal Logic
+      const adminModal = document.getElementById('adminModal');
+      const adminPanel = document.getElementById('adminPanel');
+
+      document.getElementById('sidebarAdminBtn').addEventListener('click', () => {
+        adminModal.classList.remove('hidden');
+      });
+
+      document.getElementById('closeAdminModalBtn').addEventListener('click', () => {
+        adminModal.classList.add('hidden');
+      });
+
+      document.getElementById('loginAdminBtn').addEventListener('click', () => {
+        const pass = document.getElementById('adminPassInput').value;
+        if (pass === ADMIN_PASS) {
+          adminModal.classList.add('hidden');
+          document.getElementById('adminPassInput').value = '';
+          renderAdminPanel();
+          adminPanel.classList.remove('hidden');
+        } else {
+          showToast('❌ Неверный пароль!');
+        }
+      });
+
+      document.getElementById('closeAdminPanelBtn').addEventListener('click', () => {
+        adminPanel.classList.add('hidden');
+      });
+
+      // Init
+      renderRoster();
+    </script>
   </body>
 </html>
