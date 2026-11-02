@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SHX 亗 | Esports Guild</title>
+    <meta
+      name="description"
+      content="SHX 亗 is an esports guild landing page for Free Fire players, team growth, leaderboard, rules, and community registration."
+    />
+    <meta
+      name="keywords"
+      content="SHX, SHX 亗, esports guild, Free Fire guild, leaderboard, gaming community"
+    />
+    <meta name="theme-color" content="#050b14" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #050b14;
+        --bg-soft: #0d1420;
+        --panel: rgba(14, 20, 30, 0.84);
+        --panel-strong: rgba(18, 25, 36, 0.98);
+        --gold: #f5d76e;
+        --gold-strong: #f0b93b;
+        --gold-deep: #86560b;
+        --line: rgba(245, 215, 110, 0.28);
+        --text: #ebf2ff;
+        --muted: #a6b0c3;
+        --green: #4ade80;
+        --red: #ff5d73;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Rajdhani", sans-serif;
+        background:
+          radial-gradient(circle at 10% 10%, rgba(245, 215, 110, 0.08), transparent 24%),
+          radial-gradient(circle at 90% 100%, rgba(133, 86, 11, 0.12), transparent 28%),
+          var(--bg);
+        color: var(--text);
+      }
+
+      .font-orbitron {
+        font-family: "Orbitron", sans-serif;
+      }
+
+      .gold-text {
+        background: linear-gradient(180deg, #fff 0%, #fce7a8 22%, #f5d76e 50%, #a66d1f 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 0 18px rgba(245, 215, 110, 0.25);
+      }
+
+      .glass {
+        background: linear-gradient(180deg, rgba(15, 21, 31, 0.92), rgba(10, 15, 22, 0.88));
+        border: 1px solid var(--line);
+        box-shadow: 0 16px 38px rgba(0, 0, 0, 0.28);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      }
+
+      .hero-grid {
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        background-size: 28px 28px;
+      }
+
+      .pulse {
+        animation: pulse 3.2s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.06); }
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem 0.8rem;
+        border-radius: 999px;
+        border: 1px solid rgba(245, 215, 110, 0.32);
+        background: rgba(245, 215, 110, 0.08);
+        color: var(--gold);
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-family: "Orbitron", sans-serif;
+      }
+
+      .btn-gold {
+        background: linear-gradient(135deg, var(--gold), var(--gold-strong), var(--gold-deep));
+        color: #0b1018;
+        box-shadow: 0 10px 26px rgba(245, 215, 110, 0.24);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .btn-gold:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 18px 30px rgba(245, 215, 110, 0.3);
+      }
+
+      .panel-title {
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .text-glow {
+        text-shadow: 0 0 20px rgba(245, 215, 110, 0.28);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="min-h-screen">
+      <header class="sticky top-0 z-50 border-b border-yellow-500/20 bg-[#090f18]/80 backdrop-blur-md">
+        <div class="mx-auto max-w-7xl px-5 py-4 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-xl border border-yellow-500/30 bg-yellow-500/10 text-yellow-300">
+              <i class="fas fa-crown"></i>
+            </div>
+            <div>
+              <div class="font-orbitron text-xl font-black tracking-[0.18em] gold-text">SHX 亗</div>
+            </div>
+          </div>
+
+          <nav class="hidden items-center gap-8 md:flex">
+            <a href="#about" class="text-sm uppercase tracking-[0.18em] text-gray-300 hover:text-yellow-300">About</a>
+            <a href="#leaderboard" class="text-sm uppercase tracking-[0.18em] text-gray-300 hover:text-yellow-300">Leaderboard</a>
+            <a href="#rules" class="text-sm uppercase tracking-[0.18em] text-gray-300 hover:text-yellow-300">Rules</a>
+            <a href="#join" class="text-sm uppercase tracking-[0.18em] text-gray-300 hover:text-yellow-300">Apply</a>
+          </nav>
+
+          <a href="#join" class="btn-gold rounded-xl px-4 py-2 font-orbitron text-xs uppercase tracking-[0.18em]">
+            Join guild
+          </a>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero-grid relative overflow-hidden">
+          <div class="mx-auto max-w-7xl px-5 py-20 md:py-28">
+            <div class="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+              <div>
+                <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-yellow-500/30 bg-yellow-500/8 px-4 py-2 text-[10px] font-orbitron uppercase tracking-[0.2em] text-yellow-300">
+                  <span class="h-2 w-2 rounded-full bg-green-400"></span>
+                  Official esports guild
+                </div>
+
+                <h1 class="font-orbitron text-5xl font-black leading-none tracking-[0.14em] text-white md:text-7xl gold-text">
+                  SHX 亗
+                </h1>
+
+                <p class="mt-6 max-w-xl text-xl text-slate-300 md:text-2xl">
+                  One squad. One family. One legend.
+                </p>
+
+                <div class="mt-8 flex flex-wrap gap-4">
+                  <a href="#join" class="btn-gold rounded-xl px-6 py-3 font-orbitron text-sm uppercase tracking-[0.14em]">
+                    Apply now
+                  </a>
+                  <a href="#leaderboard" class="rounded-xl border border-yellow-500/35 bg-transparent px-6 py-3 font-orbitron text-sm uppercase tracking-[0.14em] text-yellow-300 hover:bg-yellow-500/8">
+                    View board
+                  </a>
+                </div>
+
+                <div class="mt-10 grid max-w-xl gap-4 sm:grid-cols-3">
+                  <div class="glass rounded-2xl p-4">
+                    <div class="font-orbitron text-3xl font-black gold-text">120+</div>
+                    <div class="text-sm uppercase tracking-[0.12em] text-slate-400">Players</div>
+                  </div>
+                  <div class="glass rounded-2xl p-4">
+                    <div class="font-orbitron text-3xl font-black gold-text">18</div>
+                    <div class="text-sm uppercase tracking-[0.12em] text-slate-400">Weekly events</div>
+                  </div>
+                  <div class="glass rounded-2xl p-4">
+                    <div class="font-orbitron text-3xl font-black gold-text">#1</div>
+                    <div class="text-sm uppercase tracking-[0.12em] text-slate-400">Ambition</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="glass rounded-[28px] p-5 border border-yellow-500/25">
+                <div class="rounded-2xl border border-yellow-500/30 bg-[#0b1220] p-5">
+                  <div class="mb-5 flex items-center justify-between">
+                    <div class="font-orbitron text-xs uppercase tracking-[0.18em] text-yellow-300">Guild status</div>
+                    <div class="flex items-center gap-2 text-xs uppercase tracking-[0.12em] text-green-400">
+                      <span class="h-2.5 w-2.5 rounded-full bg-green-400"></span>
+                      online
+                    </div>
+                  </div>
+
+                  <div class="space-y-4">
+                    <div class="flex items-center justify-between rounded-xl bg-slate-900/60 p-3">
+                      <span class="text-slate-400">Leaderboard rank</span>
+                      <span class="font-orbitron text-xl font-black gold-text">#12</span>
+                    </div>
+                    <div class="flex items-center justify-between rounded-xl bg-slate-900/60 p-3">
+                      <span class="text-slate-400">Season points</span>
+                      <span class="font-orbitron text-xl font-black gold-text">4,820</span>
+                    </div>
+                    <div class="flex items-center justify-between rounded-xl bg-slate-900/60 p-3">
+                      <span class="text-slate-400">Active squads</span>
+                      <span class="font-orbitron text-xl font-black gold-text">08</span>
+                    </div>
+                  </div>
+
+                  <div class="mt-6 border-t border-yellow-500/20 pt-4">
+                    <div class="font-orbitron text-[10px] uppercase tracking-[0.2em] text-slate-400">Featured reward</div>
+                    <div class="mt-2 text-2xl font-black gold-text">Best soft prize</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="about" class="mx-auto max-w-7xl px-5 py-20">
+          <div class="mb-8 text-center">
+            <span class="panel-title badge">About guild</span>
+          </div>
+
+          <div class="grid gap-6 md:grid-cols-3">
+            <div class="glass rounded-3xl p-6">
+              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-yellow-500/30 bg-yellow-500/10 text-yellow-300">
+                <i class="fas fa-users"></i>
+              </div>
+              <h3 class="font-orbitron text-xl font-bold uppercase tracking-[0.12em] text-white">Teamwork</h3>
+              <p class="mt-3 text-lg text-slate-300">
+                We grow together through discipline, strategy, and shared goals.
+              </p>
+            </div>
+
+            <div class="glass rounded-3xl p-6">
+              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-yellow-500/30 bg-yellow-500/10 text-yellow-300">
+                <i class="fas fa-trophy"></i>
+              </div>
+              <h3 class="font-orbitron text-xl font-bold uppercase tracking-[0.12em] text-white">Competition</h3>
+              <p class="mt-3 text-lg text-slate-300">
+                Every week we push harder, earn points, and stay sharp for the next battle.
+              </p>
+            </div>
+
+            <div class="glass rounded-3xl p-6">
+              <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-yellow-500/30 bg-yellow-500/10 text-yellow-300">
+                <i class="fas fa-crown"></i>
+              </div>
+              <h3 class="font-orbitron text-xl font-bold uppercase tracking-[0.12em] text-white">Legacy</h3>
+              <p class="mt-3 text-lg text-slate-300">
+                SHX 亗 is built for players who want to become part of something bigger than themselves.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="leaderboard" class="mx-auto max-w-7xl px-5 py-5">
+          <div class="mb-8 text-center">
+            <span class="panel-title badge">Leaderboard</span>
+          </div>
+
+          <div class="grid gap-6 md:grid-cols-3">
+            <div class="glass rounded-3xl p-6 text-center">
+              <div class="text-4xl">🥇</div>
+              <div class="mt-4 font-orbitron text-xs uppercase tracking-[0.12em] text-slate-400">Top 1</div>
+              <div class="mt-2 text-2xl font-black gold-text">ISOJANE 67X</div>
+              <div class="mt-2 text-slate-300">5,900 pts</div>
+            </div>
+            <div class="glass rounded-3xl p-6 text-center">
+              <div class="text-4xl">🥈</div>
+              <div class="mt-4 font-orbitron text-xs uppercase tracking-[0.12em] text-slate-400">Top 2</div>
+              <div class="mt-2 text-2xl font-black gold-text">M4RK</div>
+              <div class="mt-2 text-slate-300">4,930 pts</div>
+            </div>
+            <div class="glass rounded-3xl p-6 text-center">
+              <div class="text-4xl">🥉</div>
+              <div class="mt-4 font-orbitron text-xs uppercase tracking-[0.12em] text-slate-400">Top 3</div>
+              <div class="mt-2 text-2xl font-black gold-text">RAVEN</div>
+              <div class="mt-2 text-slate-300">4,760 pts</div>
+            </div>
+          </div>
+        </section>
+
+        <section id="rules" class="mx-auto max-w-6xl px-5 py-20">
+          <div class="mb-8 text-center">
+            <span class="panel-title badge">Guild rules</span>
+          </div>
+
+          <div class="glass rounded-3xl p-8">
+            <div class="grid gap-6 md:grid-cols-3">
+              <div class="rounded-2xl border border-yellow-500/20 bg-slate-900/40 p-5">
+                <div class="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-500/10 text-xl text-yellow-300">01</div>
+                <h4 class="font-orbitron text-lg uppercase tracking-[0.12em] text-yellow-300">Nick format</h4>
+                <p class="mt-3 text-slate-300">All members must use the format SHX [YourNick] 亗.</p>
+              </div>
+
+              <div class="rounded-2xl border border-yellow-500/20 bg-slate-900/40 p-5">
+                <div class="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-500/10 text-xl text-yellow-300">02</div>
+                <h4 class="font-orbitron text-lg uppercase tracking-[0.12em] text-yellow-300">Weekly activity</h4>
+                <p class="mt-3 text-slate-300">Earn points and stay active every week to keep your place.</p>
+              </div>
+
+              <div class="rounded-2xl border border-yellow-500/20 bg-slate-900/40 p-5">
+                <div class="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-500/10 text-xl text-yellow-300">03</div>
+                <h4 class="font-orbitron text-lg uppercase tracking-[0.12em] text-yellow-300">Age policy</h4>
+                <p class="mt-3 text-slate-300">Players must be 11 years old or above to join.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="join" class="mx-auto max-w-5xl px-5 pb-20">
+          <div class="mb-8 text-center">
+            <span class="panel-title badge">Apply</span>
+          </div>
+
+          <div class="glass rounded-3xl p-6 md:p-10">
+            <form class="grid gap-5 md:grid-cols-2">
+              <div>
+                <label class="mb-2 block font-orbitron text-[11px] uppercase tracking-[0.2em] text-yellow-300">Nickname</label>
+                <input type="text" placeholder="Example: ISKO" class="w-full rounded-xl border border-yellow-500/25 bg-slate-900/70 px-4 py-3 text-white outline-none ring-0 placeholder:text-slate-500" />
+              </div>
+
+              <div>
+                <label class="mb-2 block font-orbitron text-[11px] uppercase tracking-[0.2em] text-yellow-300">Role</label>
+                <select class="w-full rounded-xl border border-yellow-500/25 bg-slate-900/70 px-4 py-3 text-white outline-none">
+                  <option>Officer</option>
+                  <option>Temporary leader</option>
+                  <option>Regular player</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="mb-2 block font-orbitron text-[11px] uppercase tracking-[0.2em] text-yellow-300">FF ID</label>
+                <input type="text" placeholder="123456789" class="w-full rounded-xl border border-yellow-500/25 bg-slate-900/70 px-4 py-3 text-white outline-none placeholder:text-slate-500" />
+              </div>
+
+              <div>
+                <label class="mb-2 block font-orbitron text-[11px] uppercase tracking-[0.2em] text-yellow-300">Telegram</label>
+                <input type="text" placeholder="@username" class="w-full rounded-xl border border-yellow-500/25 bg-slate-900/70 px-4 py-3 text-white outline-none placeholder:text-slate-500" />
+              </div>
+
+              <div class="md:col-span-2">
+                <label class="mb-2 block font-orbitron text-[11px] uppercase tracking-[0.2em] text-yellow-300">Tiktok</label>
+                <input type="text" placeholder="@username" class="w-full rounded-xl border border-yellow-500/25 bg-slate-900/70 px-4 py-3 text-white outline-none placeholder:text-slate-500" />
+              </div>
+
+              <div class="md:col-span-2 flex justify-center pt-4">
+                <button type="button" class="btn-gold rounded-xl px-8 py-3 font-orbitron text-sm uppercase tracking-[0.14em]">
+                  Send request
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer class="border-t border-yellow-500/20 bg-[#060d17]">
+        <div class="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-8 text-center text-slate-400 md:flex-row md:items-center md:justify-between md:text-left">
+          <div>
+            <div class="font-orbitron text-lg font-black gold-text">SHX 亗</div>
+            <p class="mt-1 text-sm">Esports guild landing page</p>
+          </div>
+
+          <div class="flex items-center gap-4 text-sm">
+            <a href="#about" class="hover:text-yellow-300">About</a>
+            <a href="#leaderboard" class="hover:text-yellow-300">Leaderboard</a>
+            <a href="#join" class="hover:text-yellow-300">Apply</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
